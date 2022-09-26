@@ -31,6 +31,7 @@ function addToBag () {
         alert(`El dato ingresado es incorrecto. Por favor, vuelva a intenarlo.`);
         product = prompt("¿Que producto queres agregar al carrito? (Crewneck/Hoodie/Shirt/CD/Cassette)").toLowerCase();
     }
+    return productPrice
 }
 
 //Funcion para calcular el envio segun pais
@@ -52,6 +53,7 @@ function shippingFee () {
         shipping = 10;
         alert(`El costo de envio a Europa es de ${shipping} U$D`);
     }
+    return shipping
 }
 
 //Funcion para metodo de pago
@@ -68,6 +70,7 @@ function pay () {
         alert (`Muchas gracias por su compra! Le pedimos que nos deje su numero de contacto para coordinar el pago.`);
         let contacto = parseInt(prompt(`Ingrese su numero de telefono. Nos estaremos comunicando pronto!`));
     }
+    return payment;
 }
 
 //Funcion para calcular el total de la compra
@@ -82,7 +85,7 @@ function total () {
         shippingFee();
         pay();
         let suma = productPrice + shipping;
-        alert(`El total de su compra es de: ${productPrice} + ${shipping} = U$D ${suma}`);
+        alert(`El total de su compra es de: U$D ${productPrice} + U$D ${shipping} = U$D ${suma}`);
     }
     else {
         alert(`Gracias, vuelva pronto!`);
