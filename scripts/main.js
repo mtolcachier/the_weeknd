@@ -1,77 +1,78 @@
-let product;
-let productPrice;
-let shipping ;
-let shippingCost;
-let payment;
+const products = [
+    {producto: "hoodie", precio: 58},
+    {producto: "crewneck", precio: 58},
+    {producto: "shirt", precio: 25},
+    {producto: "cd", precio: 15},
+    {producto: "cassette", precio: 8},
+];
 
-//Funcion para agregar prodcuto al carrito
+const shipping = [
+    {pais: "argentina", envio: 15},
+    {pais: "europa", envio: 10},
+    {pais: "eeuu", envio: 8},
+];
+
+const payment = ["t", "tc", "td"]; 
+
+let precio;
+let envio;
+
+// Funcion para agregar prodcuto al carrito
 function addToBag () {
-    product = prompt("¿Que producto queres agregar al carrito? (Crewneck/Hoodie/Shirt/CD/Cassette)").toLowerCase();
-    if (product == 'hoodie') {
-        productPrice = 78
-        alert(`se agrego ${product} al carrito, el precio de la prenda es de ${productPrice} U$D`);
-    }
-    else if (product == 'crewneck') {
-        productPrice = 58
-        alert(`se agrego ${product} al carrito, el precio de la prenda es de ${productPrice} U$D`);
-    }
-    else if (product == 'shirt') {
-        productPrice = 28
-        alert(`se agrego ${product} al carrito, el precio de la prenda es de ${productPrice} U$D`);
-    }
-    else if (product == 'cd') {
-        productPrice = 15
-        alert(`se agrego ${product} al carrito, el precio de la prenda es de ${productPrice} U$D`);
-    }
-    else if (product == 'cassette') {
-        productPrice = 8
-        alert(`se agrego ${product} al carrito, el precio de la prenda es de ${productPrice} U$D`);
-    }
-    else {
+    let wishList = prompt("¿Que producto queres agregar al carrito? (Crewneck/Hoodie/Shirt/CD/Cassette)").toLowerCase();
+    const filterProd = products.find(el => {
+        if (el.producto !== wishList) {
+            return false;
+        }
+        return true;
+    });
+    if (filterProd == undefined) {
         alert(`El dato ingresado es incorrecto. Por favor, vuelva a intenarlo.`);
-        product = prompt("¿Que producto queres agregar al carrito? (Crewneck/Hoodie/Shirt/CD/Cassette)").toLowerCase();
+        wishList = prompt("¿Que producto queres agregar al carrito? (Crewneck/Hoodie/Shirt/CD/Cassette)").toLowerCase();
     }
-    return productPrice
-}
+    else { 
+        console.log(filterProd);
+        let prod = filterProd.producto;
+        precio = filterProd.precio;
+        alert(`se agrego ${prod} al carrito, su precio es de U$D${precio}`);
+        return precio;
+    }
+};
 
 //Funcion para calcular el envio segun pais
 function shippingFee () {
-    shippingCost = prompt(`¿A donde lo queres enviar? (Argentina/EEUU/Europa)`).toLowerCase();
-    while ((shippingCost != `argentina`) && (shippingCost != `eeuu`) && (shippingCost != `europa`)) {
+    let shippingCost = prompt(`¿A donde lo queres enviar? (Argentina/EEUU/Europa)`).toLowerCase();
+    const filterShip = shipping.find(el => {
+        if (el.pais !== shippingCost) {
+            return false;
+        }
+        return true;
+    });
+    if (filterShip == undefined) {
         alert(`El dato ingresado es incorrecto. Por favor, vuelva a intenarlo.`);
         shippingCost = prompt(`¿A donde lo queres enviar? (Argentina/EEUU/Europa)`).toLowerCase();
     }
-    if (shippingCost == `argentina`) {
-        shipping = 15;
-        alert(`El costo de envio a Argentina es de ${shipping} U$D`);
+    else { 
+        console.log(filterShip);
+        let pais = filterShip.pais;
+        envio = filterShip.envio;
+        alert(`El costo de envio a ${pais} es de U$D${envio}`);
+        return envio;
     }
-    else if (shippingCost == `eeuu`) {
-        shipping = 8;
-        alert(`El costo de envio a EEUU es de ${shipping} U$D`);
-    }
-    else {
-        shipping = 10;
-        alert(`El costo de envio a Europa es de ${shipping} U$D`);
-    }
-    return shipping
-}
+};
 
 //Funcion para metodo de pago
 function pay () {
-    payment = prompt(`Ingrese el metodo de pago con el que va a abonar: tarjeta de credito (TC)/tarjeta de debito (TD)/Transferencia (T)`).toLowerCase();
-    while ((payment !=`tc`) && (payment !=`td`) && (payment !=`t`)) {
-        alert(`El dato ingresado es incorrecto. Por favor, vuelva a intenarlo.`);
-        payment = prompt(`Ingrese el metodo de pago con el que va a abonar: tarjeta de credito (TC)/tarjeta de debito (TD)/Efectivo (EF)`).toLowerCase();
-    }
-    if ((payment == `tc`) || (payment == `td`)){
-        alert (`En la siguiente pestaña podra seguir los pasos para finalizar su compra.`);
+    let pay = prompt("Ingrese el metodo de pago con el que va a abonar: tarjeta de credito (TC)/tarjeta de debito (TD)/Transferencia (T)").toLowerCase();
+    const filterPay = payment.includes(pay);
+    if (filterPay == true) {
+        alert("En la siguiente pestaña podra seguir los pasos para finalizar su compra.");
     }
     else {
-        alert (`Muchas gracias por su compra! Le pedimos que nos deje su numero de contacto para coordinar el pago.`);
-        let contacto = parseInt(prompt(`Ingrese su numero de telefono. Nos estaremos comunicando pronto!`));
+        alert(`El dato ingresado es incorrecto. Por favor, vuelva a intenarlo.`);
+        pay = prompt("Ingrese el metodo de pago con el que va a abonar: tarjeta de credito (TC)/tarjeta de debito (TD)/Transferencia (T)").toLowerCase();
     }
-    return payment;
-}
+};
 
 //Funcion para calcular el total de la compra
 function total () {
@@ -84,13 +85,13 @@ function total () {
         addToBag();
         shippingFee();
         pay();
-        let suma = productPrice + shipping;
-        alert(`El total de su compra es de: U$D ${productPrice} + U$D ${shipping} = U$D ${suma}`);
+        let suma = precio + envio;
+        alert(`El total de su compra es de: U$D${precio} + U$D${envio} = U$D${suma}`);
     }
     else {
         alert(`Gracias, vuelva pronto!`);
     }
-}
+};
 
 total();
 
