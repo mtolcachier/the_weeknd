@@ -2,7 +2,7 @@ html,body {
     padding: 0;
     margin: 0;
     font-family: 'Source Code Pro', monospace;
-    font-weight: 300;
+    font-weight: 400;
     color: black;
     text-transform: uppercase;
     letter-spacing: 1.5px;
@@ -20,14 +20,23 @@ a{
     }
 }
 
-.nav-link {
+.button {
+    border: none
+}
+
+.filter-btn {
+    text-transform: uppercase;
+    background-color: transparent;
+    border: none;
     border-bottom: 1px solid transparent;
     transition-property: border-bottom;
     transition-delay: 0s;
-    transition-duration: 1s;
-    transition-timing-function: ease-in;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
     
-    &:hover {
+    &:hover,
+    .active{
+        cursor: pointer;
         border-bottom: 1px solid black;
     }
 }
@@ -46,6 +55,28 @@ a{
     }
 }
 
+article {
+    p {
+        font-size: small;
+    }
+    .name {
+        font-weight: bold;
+        font-size: medium;
+    }
+    .addToCart:hover {
+        background-color: black !important;
+        color: white;
+    }
+}
+
+.show {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
 footer {
 	margin-right: auto;
 	margin-left: auto;
@@ -62,21 +93,5 @@ footer {
 
     span {
         font-size: small;
-    }
-}
-
-article {
-    p {
-        font-size: small;
-    }
-    .btn:hover {
-        border: 1px solid lightgrey !important;
-        background-color: lightgrey !important;
-    }
-
-    .btn:focus {
-        border: 1px solid black !important;
-        background-color: black !important;
-        color: white;
     }
 }

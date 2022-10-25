@@ -1,97 +1,54 @@
+const content = document.getElementById("content");
+const showAll = document.getElementById("all");
+const showHoodies = document.getElementById("hoodies");
+const showMusic = document.getElementById("music");
+const showShirts = document.getElementById("shirts");
+const item = document.getElementById("item");
+const hoodieCont = document.querySelectorAll("container-hoodie > item");
+const shirtCont = document.querySelectorAll("container-shirt > item");
+const musicCont = document.querySelectorAll("container-music > item");
+
 const products = [
-    {producto: "hoodie", precio: 58},
-    {producto: "crewneck", precio: 58},
-    {producto: "shirt", precio: 25},
-    {producto: "cd", precio: 15},
-    {producto: "cassette", precio: 8},
-];
+    {category: "shirt", name: "Dawn FM Plane Tee", price: 30, image: "https://cdn.shopify.com/s/files/1/1429/6260/products/DAWNFMPLANETEE_800x.png?v=1642780477"},
+    {category: "hoodie", name: "Dawn FM Logo Hoodie", price: 78, image: "https://cdn.shopify.com/s/files/1/1429/6260/products/XO-CHROME-LOGO-PULLOVER-HOOD_bf9e5811-2cb1-4819-aa0d-4f5f131ae1df_800x.png?v=1651004473"},
+    {category: "shirt", name: "Dawn FM Longsleeve Tee", price: 38, image: "https://cdn.shopify.com/s/files/1/1429/6260/products/DFM-SOLAR-LS-BLACK-FRONT_800x.png?v=1641073242"},
+    {category: "hoodie", name:"Dawn FM Cover Hoodie", price: 80, image: "https://cdn.shopify.com/s/files/1/1429/6260/products/DFM-COVER-HOODIE-BLACK-BACK_800x.png?v=1641073302"},
+    {category: "hoodie", name: "Dawn FM Logo Crewneck", price: 58, image:"https://cdn.shopify.com/s/files/1/1429/6260/products/DFM-CHROME-TITLE-CREWNECK-BLACK-FRONT_800x.png?v=1641073319"},
+    {category: "music", name: "Dawn FM CD", price: 15, image: "https://cdn.shopify.com/s/files/1/1429/6260/products/DFMCOLLECTORS02FRONT_800x.png?v=1641073211"},
+    {category: "music", name: "Dawn FM Cassette", price: 8, image: "https://cdn.shopify.com/s/files/1/1429/6260/products/DFMCOLLECTORS01CSFRONT_593ddedb-39db-4d6c-a9ce-92423b143ce1_800x.png?v=1641073329"},
+    {category: "hoodie", name: "Dawn FM Crewneck ERA", price: 58, image: "https://cdn.shopify.com/s/files/1/1429/6260/products/DFM-CREWNECK-BLACK-FRONT_800x.png?v=1641073286"},
+    {category: "music", name: "Dawn FM Vinyl Hits", price: 22, image: "https://cdn.shopify.com/s/files/1/1429/6260/products/TheWeeknd_TheHighlights_StandardD2C-Front_2_800x.png?v=1632860374"},
+    {category: "hoodie", name: "Dawn FM Radio Hoodie", price: 75, image: "https://cdn.shopify.com/s/files/1/1429/6260/products/DFM-HOODIE-BLACK-BACK_440x.png?v=1641073269"},
+    {category: "shirt", name: "Dawn FM Chrome Tee", price: 33, image: "https://cdn.shopify.com/s/files/1/1429/6260/products/DFM-CHROME-TITLE-TEE-BLACK-FRONT_300x.png?v=1641073307"},
+    {category: "music", name: "Dawn FM CD Remixes", price: 13, image: "https://cdn.shopify.com/s/files/1/1429/6260/products/DAWNFMALTERNATEWORLDDIGITALALBUMARTcopy_800x.png?v=1650487441"},
+] || JSON.parse(localStorage.getItem("products"));
 
-const shipping = [
-    {pais: "argentina", envio: 15},
-    {pais: "europa", envio: 10},
-    {pais: "eeuu", envio: 8},
-];
+showAll.addEventListener('click',() => {
+    item.className += 'show';
+    item.className -= 'hide';
+} );
 
-const payment = ["t", "tc", "td"]; 
+showHoodies.addEventListener('click',()=>{
+    hoodieCont.className += 'show';
+    hoodieCont.className -= 'hide';
+    shirtCont.className -= 'show';
+    shirtCont.className += 'hide';
+    musicCont.className -= 'show';
+    musicCont.className -= 'hide';
+})
 
-let precio;
-let envio;
+products.forEach(product => {
+        content.innerHTML +=`<div class="container-${product.category} text-center col my-5">
+                                    <article id="item" class=" ">
+                                        <span id="${product.category}"></span>
+                                        <img src= ${product.image} alt="${product.name}" title="${product.name}" width=300px />
+                                        <p class="name">${product.name} </p>
+                                        <p>U$D ${product.price} </p>
+                                        <button id="addToCart" type="button" class="btn btn-sm btn-outline-dark">+ Add to cart</button>
+                                    </article>
+                                </div>`;
+}); 
+localStorage.setItem("products", JSON.stringify(products));
 
-// Funcion para agregar prodcuto al carrito
-function addToBag () {
-    let wishList = prompt("¿Que producto queres agregar al carrito? (Crewneck/Hoodie/Shirt/CD/Cassette)").toLowerCase();
-    const filterProd = products.find(el => {
-        if (el.producto !== wishList) {
-            return false;
-        }
-        return true;
-    });
-    if (filterProd == undefined) {
-        alert(`El dato ingresado es incorrecto. Por favor, vuelva a intenarlo.`);
-        wishList = prompt("¿Que producto queres agregar al carrito? (Crewneck/Hoodie/Shirt/CD/Cassette)").toLowerCase();
-    }
-    else { 
-        console.log(filterProd);
-        let prod = filterProd.producto;
-        precio = filterProd.precio;
-        alert(`se agrego ${prod} al carrito, su precio es de U$D${precio}`);
-        return precio;
-    }
-};
 
-//Funcion para calcular el envio segun pais
-function shippingFee () {
-    let shippingCost = prompt(`¿A donde lo queres enviar? (Argentina/EEUU/Europa)`).toLowerCase();
-    const filterShip = shipping.find(el => {
-        if (el.pais !== shippingCost) {
-            return false;
-        }
-        return true;
-    });
-    if (filterShip == undefined) {
-        alert(`El dato ingresado es incorrecto. Por favor, vuelva a intenarlo.`);
-        shippingCost = prompt(`¿A donde lo queres enviar? (Argentina/EEUU/Europa)`).toLowerCase();
-    }
-    else { 
-        console.log(filterShip);
-        let pais = filterShip.pais;
-        envio = filterShip.envio;
-        alert(`El costo de envio a ${pais} es de U$D${envio}`);
-        return envio;
-    }
-};
-
-//Funcion para metodo de pago
-function pay () {
-    let pay = prompt("Ingrese el metodo de pago con el que va a abonar: tarjeta de credito (TC)/tarjeta de debito (TD)/Transferencia (T)").toLowerCase();
-    const filterPay = payment.includes(pay);
-    if (filterPay == true) {
-        alert("En la siguiente pestaña podra seguir los pasos para finalizar su compra.");
-    }
-    else {
-        alert(`El dato ingresado es incorrecto. Por favor, vuelva a intenarlo.`);
-        pay = prompt("Ingrese el metodo de pago con el que va a abonar: tarjeta de credito (TC)/tarjeta de debito (TD)/Transferencia (T)").toLowerCase();
-    }
-};
-
-//Funcion para calcular el total de la compra
-function total () {
-    let checkout = prompt(`¿Desea realizar la compra? Si/No`).toLowerCase();
-    while ((checkout != `si` ) && (checkout != `no` )){
-        alert(`El dato ingresado es incorrecto. Por favor, vuelva a intenarlo.`);
-        checkout = prompt(`¿Desea realizar la compra? Si/No`).toLowerCase();
-    }
-    if (checkout == `si`){
-        addToBag();
-        shippingFee();
-        pay();
-        let suma = precio + envio;
-        alert(`El total de su compra es de: U$D${precio} + U$D${envio} = U$D${suma}`);
-    }
-    else {
-        alert(`Gracias, vuelva pronto!`);
-    }
-};
-
-total();
 

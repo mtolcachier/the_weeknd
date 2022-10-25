@@ -2,7 +2,7 @@ html, body {
   padding: 0;
   margin: 0;
   font-family: 'Source Code Pro', monospace;
-  font-weight: 300;
+  font-weight: 400;
   color: black;
   text-transform: uppercase;
   letter-spacing: 1.5px; }
@@ -15,13 +15,21 @@ a {
   .custom-toggler.navbar-toggler .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important; }
 
-.nav-link {
+.button {
+  border: none; }
+
+.filter-btn {
+  text-transform: uppercase;
+  background-color: transparent;
+  border: none;
   border-bottom: 1px solid transparent;
   transition-property: border-bottom;
   transition-delay: 0s;
-  transition-duration: 1s;
-  transition-timing-function: ease-in; }
-  .nav-link:hover {
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out; }
+  .filter-btn:hover,
+  .filter-btn .active {
+    cursor: pointer;
     border-bottom: 1px solid black; }
 
 .fa-regular.fa-user,
@@ -39,6 +47,23 @@ a {
   .fa-brands.fa-youtube:hover {
     opacity: 0.5; }
 
+article p {
+  font-size: small; }
+
+article .name {
+  font-weight: bold;
+  font-size: medium; }
+
+article .addToCart:hover {
+  background-color: black !important;
+  color: white; }
+
+.show {
+  display: block; }
+
+.hidden {
+  display: none; }
+
 footer {
   margin-right: auto;
   margin-left: auto;
@@ -52,15 +77,3 @@ footer {
     margin-top: 25px; }
   footer span {
     font-size: small; }
-
-article p {
-  font-size: small; }
-
-article .btn:hover {
-  border: 1px solid lightgrey !important;
-  background-color: lightgrey !important; }
-
-article .btn:focus {
-  border: 1px solid black !important;
-  background-color: black !important;
-  color: white; }
