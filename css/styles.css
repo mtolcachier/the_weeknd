@@ -32,6 +32,9 @@ a {
     cursor: pointer;
     border-bottom: 1px solid black; }
 
+.active {
+  border-bottom: 1px solid black; }
+
 .fa-regular.fa-user,
 .fa-solid.fa-cart-shopping,
 .fa-brands.fa-instagram,

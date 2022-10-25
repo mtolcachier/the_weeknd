@@ -1,12 +1,10 @@
 const content = document.getElementById("content");
 const showAll = document.getElementById("all");
 const showHoodies = document.getElementById("hoodies");
-const showMusic = document.getElementById("music");
 const showShirts = document.getElementById("shirts");
-const item = document.getElementById("item");
-const hoodieCont = document.querySelectorAll("container-hoodie > item");
-const shirtCont = document.querySelectorAll("container-shirt > item");
-const musicCont = document.querySelectorAll("container-music > item");
+const showMusic = document.getElementById("music");
+const filterBtn = document.getElementsByClassName("filter-btn");
+
 
 const products = [
     {category: "shirt", name: "Dawn FM Plane Tee", price: 30, image: "https://cdn.shopify.com/s/files/1/1429/6260/products/DAWNFMPLANETEE_800x.png?v=1642780477"},
@@ -23,32 +21,55 @@ const products = [
     {category: "music", name: "Dawn FM CD Remixes", price: 13, image: "https://cdn.shopify.com/s/files/1/1429/6260/products/DAWNFMALTERNATEWORLDDIGITALALBUMARTcopy_800x.png?v=1650487441"},
 ] || JSON.parse(localStorage.getItem("products"));
 
-showAll.addEventListener('click',() => {
-    item.className += 'show';
-    item.className -= 'hide';
-} );
+showAll.addEventListener('click',()=> {
+    let items = document.getElementsByName('item');
+    items.forEach(item => {
+        item.removeAttribute('hidden')
+    })
+})
 
-showHoodies.addEventListener('click',()=>{
-    hoodieCont.className += 'show';
-    hoodieCont.className -= 'hide';
-    shirtCont.className -= 'show';
-    shirtCont.className += 'hide';
-    musicCont.className -= 'show';
-    musicCont.className -= 'hide';
+showHoodies.addEventListener('click',()=> {
+    let items = document.getElementsByName('item');
+    items.forEach(item => {
+        if (item.classList.contains('hoodie')) {
+            item.removeAttribute('hidden');
+        } else {
+            item.setAttribute('hidden',true);
+        }
+    })
+})
+
+showShirts.addEventListener('click',()=> {
+    let items = document.getElementsByName('item');
+    items.forEach(item => {
+        if (item.classList.contains('shirt')) {
+            item.removeAttribute('hidden');
+        } else {
+            item.setAttribute('hidden',true);
+        }
+    })
+})
+
+showMusic.addEventListener('click',()=> {
+    let items = document.getElementsByName('item');
+    items.forEach(item => {
+        if (item.classList.contains('music')) {
+            item.removeAttribute('hidden');
+        } else {
+            item.setAttribute('hidden',true);
+        }
+    })
 })
 
 products.forEach(product => {
-        content.innerHTML +=`<div class="container-${product.category} text-center col my-5">
-                                    <article id="item" class=" ">
-                                        <span id="${product.category}"></span>
-                                        <img src= ${product.image} alt="${product.name}" title="${product.name}" width=300px />
-                                        <p class="name">${product.name} </p>
-                                        <p>U$D ${product.price} </p>
-                                        <button id="addToCart" type="button" class="btn btn-sm btn-outline-dark">+ Add to cart</button>
-                                    </article>
-                                </div>`;
+    content.innerHTML +=`
+                        <div name="item" class="col my-5 ${product.category}">
+                            <article>
+                                <img src= ${product.image} alt="${product.name}" title="${product.name}" width=300px />
+                                <p class="name">${product.name} </p>
+                                <p>U$D ${product.price} </p>
+                                <button id="addToCart" type="button" class="btn btn-sm btn-outline-dark">+ Add to cart</button>
+                            </article>
+                        </div>`;
 }); 
 localStorage.setItem("products", JSON.stringify(products));
-
-
-
