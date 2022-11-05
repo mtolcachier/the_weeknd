@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/mtolcachier/the_weeknd/issues"
   },
-  "homepage": "https://github.com/mtolcachier/the_weeknd#readme"
+  "homepage": "https://github.com/mtolcachier/the_weeknd#readme",
+  "dependencies": {
+    "toastify-js": "^1.12.0"
+  }
 }

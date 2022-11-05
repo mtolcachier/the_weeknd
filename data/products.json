@@ -1,0 +1,85 @@
+[
+    {
+        "category": "shirt",
+        "name": "Dawn FM Plane Tee",
+        "price": 30,
+        "image": "https://cdn.shopify.com/s/files/1/1429/6260/products/DAWNFMPLANETEE_800x.png?v=1642780477"
+    },
+    {
+        "category": "hoodie",
+        "name": "Dawn FM Logo Hoodie",
+        "price": 78,
+        "image": "https://cdn.shopify.com/s/files/1/1429/6260/products/XO-CHROME-LOGO-PULLOVER-HOOD_bf9e5811-2cb1-4819-aa0d-4f5f131ae1df_800x.png?v=1651004473"
+    },
+    {
+        "category": "shirt",
+        "name": "Dawn FM Longsleeve Tee",
+        "price": 38, 
+        "image": "https://cdn.shopify.com/s/files/1/1429/6260/products/DFM-SOLAR-LS-BLACK-FRONT_800x.png?v=1641073242"},
+    {
+        "category":"hoodie",
+        "name": "Dawn FM Cover Hoodie", 
+        "price": 80,
+        "image": "https://cdn.shopify.com/s/files/1/1429/6260/products/DFM-COVER-HOODIE-BLACK-BACK_800x.png?v=1641073302"
+    },
+    {
+        "category": "hoodie",
+        "name": "Dawn FM Logo Crewneck",
+        "price": 58,
+        "image": "https://cdn.shopify.com/s/files/1/1429/6260/products/DFM-CHROME-TITLE-CREWNECK-BLACK-FRONT_800x.png?v=1641073319"
+    },
+    {
+        "category": "music",
+        "name": "Dawn FM CD",
+        "price": 15,
+        "image": "https://cdn.shopify.com/s/files/1/1429/6260/products/DFMCOLLECTORS02FRONT_800x.png?v=1641073211"
+    },
+    {
+        "category": "music",
+        "name": "Dawn FM Cassette",
+        "price": 8,
+        "image": "https://cdn.shopify.com/s/files/1/1429/6260/products/DFMCOLLECTORS01CSFRONT_593ddedb-39db-4d6c-a9ce-92423b143ce1_800x.png?v=1641073329"
+    },
+    {
+        "category": "hoodie",
+        "name": "Dawn FM Crewneck ERA",
+        "price": 58,
+        "image": "https://cdn.shopify.com/s/files/1/1429/6260/products/DFM-CREWNECK-BLACK-FRONT_800x.png?v=1641073286"
+    },
+    {
+        "category": "music",
+        "name": "Dawn FM Vinyl Hits",
+        "price": 22,
+        "image": "https://cdn.shopify.com/s/files/1/1429/6260/products/TheWeeknd_TheHighlights_StandardD2C-Front_2_800x.png?v=1632860374"
+    },
+    {
+        "category": "hoodie",
+        "name": "Dawn FM Radio Hoodie",
+        "price": 75,
+        "image": "https://cdn.shopify.com/s/files/1/1429/6260/products/DFM-HOODIE-BLACK-BACK_440x.png?v=1641073269"
+    },
+    {
+        "category": "shirt",
+        "name": "Dawn FM Chrome Tee",
+        "price": 33,
+        "image": "https://cdn.shopify.com/s/files/1/1429/6260/products/DFM-CHROME-TITLE-TEE-BLACK-FRONT_300x.png?v=1641073307"
+    },
+    {
+        "category": "music",
+        "name": "Dawn FM CD Remixes",
+        "price": 13,
+        "image": "https://cdn.shopify.com/s/files/1/1429/6260/products/DAWNFMALTERNATEWORLDDIGITALALBUMARTcopy_800x.png?v=1650487441"
+    },
+    {
+        "category": "shirt",
+        "name": "Dawn FM Cover Tee",
+        "price": 30,
+        "image": "https://cdn.shopify.com/s/files/1/1429/6260/products/DFM-COVER-TEE-BLACK-FRONT_800x.png?v=1641073291"
+    },
+    {
+        "category": "shirt",
+        "name": "Dawn FM Persona Tee",
+        "price": 33,
+        "image": "https://cdn.shopify.com/s/files/1/1429/6260/products/DFM-TEE-BLACK-FRONT_800x.png?v=1641073237"
+    }
+]

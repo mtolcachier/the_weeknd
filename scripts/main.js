@@ -1,12 +1,10 @@
 const content = document.getElementById("content");
-const showAll = document.getElementById("all");
-const showHoodies = document.getElementById("hoodies");
-const showShirts = document.getElementById("shirts");
-const showMusic = document.getElementById("music");
-const filterBtn = document.getElementsByClassName("filter-btn");
+const cart = document.getElementById("cart");
+const addBtn = document.getElementsByName('add-to-cart');
+const shoppingBag = [];
 
-
-const products = [
+//declaration of my products
+/*const products = [
     {category: "shirt", name: "Dawn FM Plane Tee", price: 30, image: "https://cdn.shopify.com/s/files/1/1429/6260/products/DAWNFMPLANETEE_800x.png?v=1642780477"},
     {category: "hoodie", name: "Dawn FM Logo Hoodie", price: 78, image: "https://cdn.shopify.com/s/files/1/1429/6260/products/XO-CHROME-LOGO-PULLOVER-HOOD_bf9e5811-2cb1-4819-aa0d-4f5f131ae1df_800x.png?v=1651004473"},
     {category: "shirt", name: "Dawn FM Longsleeve Tee", price: 38, image: "https://cdn.shopify.com/s/files/1/1429/6260/products/DFM-SOLAR-LS-BLACK-FRONT_800x.png?v=1641073242"},
@@ -19,57 +17,65 @@ const products = [
     {category: "hoodie", name: "Dawn FM Radio Hoodie", price: 75, image: "https://cdn.shopify.com/s/files/1/1429/6260/products/DFM-HOODIE-BLACK-BACK_440x.png?v=1641073269"},
     {category: "shirt", name: "Dawn FM Chrome Tee", price: 33, image: "https://cdn.shopify.com/s/files/1/1429/6260/products/DFM-CHROME-TITLE-TEE-BLACK-FRONT_300x.png?v=1641073307"},
     {category: "music", name: "Dawn FM CD Remixes", price: 13, image: "https://cdn.shopify.com/s/files/1/1429/6260/products/DAWNFMALTERNATEWORLDDIGITALALBUMARTcopy_800x.png?v=1650487441"},
-] || JSON.parse(localStorage.getItem("products"));
+    {category: "shirt", name: "Dawn FM Cover Tee", price: 30, image: "https://cdn.shopify.com/s/files/1/1429/6260/products/DFM-COVER-TEE-BLACK-FRONT_800x.png?v=1641073291"},
+    {category: "shirt", name: "Dawn FM Persona Tee", price: 33, image: "https://cdn.shopify.com/s/files/1/1429/6260/products/DFM-TEE-BLACK-FRONT_800x.png?v=1641073237"},
+] || JSON.parse(localStorage.getItem("products"));*/
 
-showAll.addEventListener('click',()=> {
-    let items = document.getElementsByName('item');
-    items.forEach(item => {
-        item.removeAttribute('hidden')
+//declaration of the shopping bag
+class Bag {
+    constructor(category, name, price, image){
+        this.category = category;
+        this.name = name;
+        this.price = price;
+        this.image = image;
+    }
+}
+
+fetch('./data/products.json')
+    .then( (res) => res.json())
+    .then( (data) => {
+        data.forEach(product => {
+            content.innerHTML +=`
+                                <div class="item col mx-2 my-3 ${product.category}">
+                                    <article>
+                                        <img src= ${product.image} alt="${product.name}" title="${product.name}" width=350px />
+                                        <p class="name">${product.name} </p>
+                                        <p>U$D ${product.price} </p>
+                                        <button type="button" name="add-to-cart" class="btn btn-sm btn-outline-dark">+ Add to cart</button>
+                                    </article>
+                                </div>`;
+        })
     })
-})
 
-showHoodies.addEventListener('click',()=> {
-    let items = document.getElementsByName('item');
-    items.forEach(item => {
-        if (item.classList.contains('hoodie')) {
-            item.removeAttribute('hidden');
-        } else {
-            item.setAttribute('hidden',true);
-        }
-    })
-})
-
-showShirts.addEventListener('click',()=> {
-    let items = document.getElementsByName('item');
-    items.forEach(item => {
-        if (item.classList.contains('shirt')) {
-            item.removeAttribute('hidden');
-        } else {
-            item.setAttribute('hidden',true);
-        }
-    })
-})
-
-showMusic.addEventListener('click',()=> {
-    let items = document.getElementsByName('item');
-    items.forEach(item => {
-        if (item.classList.contains('music')) {
-            item.removeAttribute('hidden');
-        } else {
-            item.setAttribute('hidden',true);
-        }
-    })
-})
-
+/*
 products.forEach(product => {
     content.innerHTML +=`
-                        <div name="item" class="col my-5 ${product.category}">
+                        <div class="item col mx-2 my-3 ${product.category}">
                             <article>
-                                <img src= ${product.image} alt="${product.name}" title="${product.name}" width=300px />
+                                <img src= ${product.image} alt="${product.name}" title="${product.name}" width=350px />
                                 <p class="name">${product.name} </p>
                                 <p>U$D ${product.price} </p>
-                                <button id="addToCart" type="button" class="btn btn-sm btn-outline-dark">+ Add to cart</button>
+                                <button type="button" name="add-to-cart" class="btn btn-sm btn-outline-dark">+ Add to cart</button>
                             </article>
                         </div>`;
-}); 
-localStorage.setItem("products", JSON.stringify(products));
+}); */
+//localStorage.setItem("products", JSON.stringify(products));
+
+addBtn.forEach(btn => {
+    btn.addEventListener('click',()=> {
+        Toastify({
+            text: "successfully added to cart!",
+            duration: 3000,
+            newWindow: true,
+            close: true,
+            gravity: "bottom",
+            position: "right",
+            stopOnFocus: true,
+            style: {
+                border: "1px solid black",
+                background: "white",
+                color: "black",
+            },
+        }).showToast();
+    })
+})

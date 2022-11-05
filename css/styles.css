@@ -17,8 +17,10 @@ a {
 
 .button {
   border: none; }
+  .button :focus {
+    border: none; }
 
-.filter-btn {
+.nav-item {
   text-transform: uppercase;
   background-color: transparent;
   border: none;
@@ -27,8 +29,8 @@ a {
   transition-delay: 0s;
   transition-duration: 0.5s;
   transition-timing-function: ease-in-out; }
-  .filter-btn:hover,
-  .filter-btn .active {
+  .nav-item:hover,
+  .nav-item .active {
     cursor: pointer;
     border-bottom: 1px solid black; }
 
@@ -40,32 +42,24 @@ a {
 .fa-brands.fa-instagram,
 .fa-brands.fa-spotify,
 .fa-brands.fa-youtube {
-  color: black;
-  margin-left: 5px;
-  margin-right: 5px; }
+  color: black; }
   .fa-regular.fa-user:hover,
   .fa-solid.fa-cart-shopping:hover,
   .fa-brands.fa-instagram:hover,
   .fa-brands.fa-spotify:hover,
   .fa-brands.fa-youtube:hover {
-    opacity: 0.5; }
+    opacity: 0.5;
+    cursor: pointer; }
 
 article p {
   font-size: small; }
 
 article .name {
-  font-weight: bold;
-  font-size: medium; }
+  font-weight: bold; }
 
 article .addToCart:hover {
   background-color: black !important;
   color: white; }
-
-.show {
-  display: block; }
-
-.hidden {
-  display: none; }
 
 footer {
   margin-right: auto;
