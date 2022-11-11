@@ -118,8 +118,18 @@ article {
     border-top: 1px solid black;
 }
 
+form div {
+    position: relative;
+}
+
 .error {
-    border: 1px solid red;
+    color: red;
+    font-size: 14.5px;
+    margin-top: 5px;
+}
+
+input:focus {
+    border: 2px solid #f2796e;
 }
 
 footer {
