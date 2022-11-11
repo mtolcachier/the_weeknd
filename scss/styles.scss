@@ -10,6 +10,21 @@ html,body {
 
 a{
     text-decoration: none;
+    color: black; 
+}
+
+.buy {
+    color: black;
+
+    &:hover .buy-now,
+    .buy-now:hover {
+        color: white;
+    }
+}
+
+input,
+option {
+    text-transform: uppercase;
 }
 
 .custom-toggler.navbar-toggler {
@@ -42,6 +57,7 @@ a{
     .active{
         cursor: pointer;
         border-bottom: 1px solid black;
+        color: black;
     }
 }
 
@@ -62,8 +78,26 @@ a{
     }
 }
 
-article {
+#total-amount {
+    text-align: end;
+    font-weight: bolder;
+    border-top: 1px solid black;
+
     p {
+        margin-top: 1em;
+        margin-bottom: 0;
+    }
+}
+
+h1,h2 {
+    text-align: center;
+    margin-top: 30px;
+    font-weight: 300;
+}
+
+article {
+    p,
+    span {
         font-size: small;
     }
     .name {
@@ -73,6 +107,15 @@ article {
         background-color: black !important;
         color: white;
     }
+}
+
+.price {
+    font-size: large;
+    font-weight: 500;
+}
+
+.checkout {
+    border-top: 1px solid black;
 }
 
 footer {

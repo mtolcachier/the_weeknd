@@ -8,7 +8,18 @@ html, body {
   letter-spacing: 1.5px; }
 
 a {
-  text-decoration: none; }
+  text-decoration: none;
+  color: black; }
+
+.buy {
+  color: black; }
+  .buy:hover .buy-now,
+  .buy .buy-now:hover {
+    color: white; }
+
+input,
+option {
+  text-transform: uppercase; }
 
 .custom-toggler.navbar-toggler {
   border: none; }
@@ -32,7 +43,8 @@ a {
   .nav-item:hover,
   .nav-item .active {
     cursor: pointer;
-    border-bottom: 1px solid black; }
+    border-bottom: 1px solid black;
+    color: black; }
 
 .active {
   border-bottom: 1px solid black; }
@@ -51,7 +63,21 @@ a {
     opacity: 0.5;
     cursor: pointer; }
 
-article p {
+#total-amount {
+  text-align: end;
+  font-weight: bolder;
+  border-top: 1px solid black; }
+  #total-amount p {
+    margin-top: 1em;
+    margin-bottom: 0; }
+
+h1, h2 {
+  text-align: center;
+  margin-top: 30px;
+  font-weight: 300; }
+
+article p,
+article span {
   font-size: small; }
 
 article .name {
@@ -60,6 +86,13 @@ article .name {
 article .addToCart:hover {
   background-color: black !important;
   color: white; }
+
+.price {
+  font-size: large;
+  font-weight: 500; }
+
+.checkout {
+  border-top: 1px solid black; }
 
 footer {
   margin-right: auto;
