@@ -3,6 +3,26 @@ const finalCart = document.getElementById('final-cart');
 const form = document.getElementById('form');
 const finalPrice = document.getElementById('checkout-price');
 
+const userName = document.querySelector('#user-name').value;
+const fname = document.querySelector('#user-name');
+const userLastName = document.querySelector('#last-name').value;
+const userEmail = document.querySelector('#email').value;
+const adress = document.querySelector('#adress').value;
+const country = document.querySelector('#country').value;
+const city = document.querySelector('#city').value;
+const zipCode = document.querySelector('#zip-code').value;
+const cardNumber = document.querySelector('#card-number').value;
+const cardName = document.querySelector('#card-name').value;
+const expiration = document.querySelector('#expiration').value;
+const secCode = document.querySelector('#sec-code').value;
+
+/*
+const checkForm = () => {
+    userName == "" ? fname.classList.add('error') : fname.classList.remove('error');
+
+}
+*/
+
 
 //SUMMARY OF THE BAG IN THE CHECKOU HTML
 const final = () => {
@@ -37,6 +57,8 @@ const price = () => {
 
 
 form.addEventListener('submit', (e) => {
+//    checkForm();
+
     e.preventDefault();
     e.stopPropagation();
 })

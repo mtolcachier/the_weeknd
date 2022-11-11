@@ -94,6 +94,9 @@ article .addToCart:hover {
 .checkout {
   border-top: 1px solid black; }
 
+.error {
+  border: 1px solid red; }
+
 footer {
   margin-right: auto;
   margin-left: auto;
