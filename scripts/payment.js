@@ -2,10 +2,33 @@ let checkout = JSON.parse(localStorage.getItem('products')) || [] ;
 const finalCart = document.getElementById('final-cart');
 const finalPrice = document.getElementById('checkout-price');
 
+function showAlert () {
+    if (fName.value.trim() != "" && lName.value.trim() != "" && email.value.trim() != "" && adress.value.trim() != "" && country.value.trim() != "" && city.value.trim() != "" && zipCode.value.trim() != "" && cardNumber.value.trim() != "" && cardName.value.trim() != "" && expiration.value.trim() != "" && secCode.value.trim() != "") { 
+
+        Swal.fire({
+            icon: 'success',
+            iconColor:'#000000',
+            title: 'Thank you for shopping',
+            html: `
+                <p>You will receive an email with the shipping information </br>
+                we hope to see you soon</p>`,
+            footer: `<a href="index.html" class="btn btn-dark">Okay</a>`,
+            showCloseButton: false,
+            showConfirmButton: false,
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            allowEnterKey: false,
+            keydownListenerCapture: true,
+        });
+        localStorage.clear();
+    }
+}
+
+//----------HELP FROM FREE CODE CAMP--------------//
 let id = (id) => document.getElementById(id);
 let classes = (classes) => document.getElementsByClassName(classes);
 
-//HELP FROM FREE CODE CAMP
+
 let form = id("form-checkout"),
     fName = id("first-name"),
     lName = id("last-name"),
@@ -21,27 +44,6 @@ let form = id("form-checkout"),
 
     errorMsg = classes("error");
 
-/*
-function showAlert () {
-    Toastify({
-        title: "Thank you for shopping",
-        text: "You will receive an email with the shipping information",
-        destination: "index.html",
-        newWindow: false,
-        close: true,
-        gravity: "top", // `top` or `bottom`
-        position: "center", // `left`, `center` or `right`
-        stopOnFocus: true, // Prevents dismissing of toast on hover
-        style: {
-            width: "300px",
-            height:"300px",
-            border: "1px solid black",
-            background: "white",
-            color: "black",
-        },
-    }).showToast();
-}
-*/
 
 let checkValid = (id, serial, message) => {
 
@@ -70,8 +72,10 @@ form.addEventListener('submit', (e) => {
     checkValid(cardName, 8, "enter the name that's on the card");
     checkValid(expiration, 9, "enter the expiration date");
     checkValid(secCode, 10, "enter the security code");
-
+    
+    showAlert()
 })
+//-------------------------------------//
 
 
 //SUMMARY OF THE BAG IN THE CHECKOU HTML
